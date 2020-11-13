@@ -1,10 +1,11 @@
-﻿using FluentValidation;
+﻿using EmailProcessor.Contracts;
+using FluentValidation;
 
 namespace Gateway.Domain.Features.SendEmail
 {
     public partial class SendEmail
     {
-        public class CommandValidator : AbstractValidator<Command>
+        public class CommandValidator : AbstractValidator<SendEmailCommand>
         {
             public CommandValidator()
             {

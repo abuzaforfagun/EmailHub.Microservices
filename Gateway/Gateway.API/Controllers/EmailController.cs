@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using EmailProcessor.Contracts;
 using Gateway.Domain.Features.SendEmail;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@ namespace Gateway.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendEmail(SendEmail.Command command)
+        public async Task<IActionResult> SendEmail(SendEmailCommand command)
         {
             await _mediator.Send(command, default);
             return Ok();
