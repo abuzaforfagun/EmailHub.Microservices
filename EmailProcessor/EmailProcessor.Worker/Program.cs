@@ -1,9 +1,9 @@
+using Communication;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using EmailProcessor.Domain;
+using MediatR;
+using Microsoft.Extensions.Configuration;
 
 namespace EmailProcessor.Worker
 {
@@ -19,6 +19,13 @@ namespace EmailProcessor.Worker
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
+                    services.AddMediatR(typeof(DomainConfiguration));
+                    services.AddSingleton<IQueueProcessor, QueueProcessor>();
+                    services.AddSingleton<IDistributedConsumer, DistributedConsumer>();
+
+                    var servicebusConfiguration = new ServiceBusConfiguration();
+                    hostContext.Configuration.GetSection("Servicebus").Bind(servicebusConfiguration);
+                    services.AddSingleton(servicebusConfiguration);
                 });
     }
 }
