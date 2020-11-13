@@ -8,6 +8,6 @@ namespace EmailProcessor.Contracts
     {
         public string SenderEmail { get; set; }
         public string Content { get; set; }
-        public string ToEmail { get; set; }
+        public string ReciverEmail { get; set; }
     }
 }

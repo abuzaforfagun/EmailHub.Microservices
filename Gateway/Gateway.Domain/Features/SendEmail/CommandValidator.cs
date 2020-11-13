@@ -13,7 +13,7 @@ namespace Gateway.Domain.Features.SendEmail
                     .NotEmpty()
                     .EmailAddress();
                 RuleFor(c => c.Content).NotEmpty();
-                RuleFor(c => c.ToEmail)
+                RuleFor(c => c.ReciverEmail)
                     .NotEmpty()
                     .EmailAddress();
             }

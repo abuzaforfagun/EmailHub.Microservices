@@ -10,7 +10,7 @@ namespace EmailProcessor.Domain.Features.SendEmail
     {
         protected override Task Handle(SendEmailCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
     }
 }
