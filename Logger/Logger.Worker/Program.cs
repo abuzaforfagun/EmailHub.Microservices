@@ -1,12 +1,9 @@
+using Communication;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EmailProcessor.Domain;
 using Logger.Domain;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 
 namespace Logger.Worker
 {
@@ -23,6 +20,12 @@ namespace Logger.Worker
                 {
                     services.AddHostedService<Worker>();
                     services.AddMediatR(typeof(DomainConfiguration));
+                    services.AddSingleton<IQueueProcessor, QueueProcessor>();
+                    services.AddSingleton<IDistributedConsumer, DistributedConsumer>();
+
+                    var servicebusConfiguration = new ServiceBusConfiguration();
+                    hostContext.Configuration.GetSection("Servicebus").Bind(servicebusConfiguration);
+                    services.AddSingleton(servicebusConfiguration);
                 });
     }
 }
