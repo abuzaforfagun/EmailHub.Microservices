@@ -1,7 +1,10 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.Azure.ServiceBus;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
@@ -9,20 +12,19 @@ namespace Communication
 {
     public class DistributedConsumer : IDistributedConsumer
     {
-        private readonly IQueueProcessor _queueProcessor;
         private QueueClient _queueClient;
         private readonly ILogger _logger;
         private readonly ServiceBusConfiguration _config;
+        private readonly IServiceProvider _serviceProvider;
 
-        public DistributedConsumer(IQueueProcessor queueProcessor,
-            ILogger<object> logger, ServiceBusConfiguration config)
+        public DistributedConsumer(ILogger<object> logger, ServiceBusConfiguration config, IServiceProvider serviceProvider)
         {
-            _queueProcessor = queueProcessor;
             _logger = logger;
             _config = config;
+            _serviceProvider = serviceProvider;
         }
 
-        public void RegisterQueueHandler<T>(string queueName)
+        public void RegisterQueueHandler<T>(string queueName) where T:IRequest
         {
             var messageHandlerOptions = new MessageHandlerOptions(ExceptionReceivedHandler)
             {
@@ -33,10 +35,19 @@ namespace Communication
             _queueClient.RegisterMessageHandler(ProcessMessagesAsync<T>, messageHandlerOptions);
         }
 
-        private async Task ProcessMessagesAsync<T>(Message message, CancellationToken token)
+        public async Task Process<T>(T payload, IServiceProvider serviceProvider)
         {
-            var payload = JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(message.Body));
-            await _queueProcessor.Process(payload);
+            var mediator = serviceProvider.GetRequiredService<IMediator>();
+            await mediator.Send(payload);
+        }
+
+        private async Task ProcessMessagesAsync<T>(Message message, CancellationToken token) where T:IRequest
+        {
+            using (var serviceProviderScope = _serviceProvider.CreateScope())
+            {
+                var payload = JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(message.Body)) as IRequest;
+                await Process(payload, serviceProviderScope.ServiceProvider);
+            }
         }
 
         private Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
