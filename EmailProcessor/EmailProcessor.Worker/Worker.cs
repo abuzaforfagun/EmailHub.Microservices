@@ -23,8 +23,6 @@ namespace EmailProcessor.Worker
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (!stoppingToken.IsCancellationRequested)
-            {
                 foreach (var queue in _busConfig.Queues)
                 {
                     var type = typeof(SendEmailCommand).Assembly.GetTypes().Single((t) => t.FullName == queue.Contractor);
@@ -37,7 +35,6 @@ namespace EmailProcessor.Worker
                         generic.Invoke(_consumer, new object[] { queue.Name });
                     }
                 }
-            }
 
             return Task.CompletedTask;
         }
