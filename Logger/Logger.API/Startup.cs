@@ -1,4 +1,5 @@
 using System;
+using AutoMapper;
 using Communication;
 using Communication.Extensions;
 using GenericUnitOfWork;
@@ -41,6 +42,7 @@ namespace Logger.API
             services.AddSingleton(servicebusConfiguration);
 
             services.AddMediatR(typeof(DomainConfiguration));
+            services.AddAutoMapper();
             services.AddCommunincationService();
             services.AddDbContext<LogDbContext>(
                 options => options

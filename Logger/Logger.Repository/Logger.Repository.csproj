@@ -5,10 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFrameworkCore.GenericUnitOfWork" Version="1.0.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.0-rc2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Logger.Domain\Logger.Domain.csproj" />
     <ProjectReference Include="..\Logger.Entities\Logger.Entities.csproj" />
   </ItemGroup>
 
