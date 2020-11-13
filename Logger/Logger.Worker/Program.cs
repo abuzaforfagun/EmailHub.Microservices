@@ -4,6 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EmailProcessor.Domain;
+using Logger.Domain;
+using MediatR;
 
 namespace Logger.Worker
 {
@@ -19,6 +22,7 @@ namespace Logger.Worker
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
+                    services.AddMediatR(typeof(DomainConfiguration));
                 });
     }
 }

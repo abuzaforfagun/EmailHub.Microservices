@@ -5,43 +5,45 @@ VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{ECEAB717-C636-4992-AA96-E394095FAE97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway.API", "Gateway\Gateway.API\Gateway.API.csproj", "{F337365C-83D2-4CBB-A8A7-1FD21932D583}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.API", "Gateway\Gateway.API\Gateway.API.csproj", "{F337365C-83D2-4CBB-A8A7-1FD21932D583}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4926F6D2-0D6B-4F11-9BD6-FA46B840809F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway.Domain", "Gateway\Gateway.Domain\Gateway.Domain.csproj", "{D05837E4-A1FA-4095-B568-F6F847EA5B3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.Domain", "Gateway\Gateway.Domain\Gateway.Domain.csproj", "{D05837E4-A1FA-4095-B568-F6F847EA5B3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway.Tests", "Gateway\Gateway.Tests\Gateway.Tests.csproj", "{1654E004-3620-4FFA-93D6-AC734EBB6C46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.Tests", "Gateway\Gateway.Tests\Gateway.Tests.csproj", "{1654E004-3620-4FFA-93D6-AC734EBB6C46}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{F89DDBF4-78D3-4FA4-81C8-6A2F8426DB74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communication", "Common\Communication\Communication.csproj", "{F109D6AE-32F0-4B47-861D-A5695365B20F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Communication", "Common\Communication\Communication.csproj", "{F109D6AE-32F0-4B47-861D-A5695365B20F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AC283C9E-DF84-4B32-8C18-D0982BB6F876}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communication.Tests", "Common\Tests\Communication.Tests\Communication.Tests.csproj", "{F957BE2D-8363-424B-9055-EFDC862E5677}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Communication.Tests", "Common\Tests\Communication.Tests\Communication.Tests.csproj", "{F957BE2D-8363-424B-9055-EFDC862E5677}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logger", "Logger", "{BEF8B4F5-8099-48B0-B183-7828E3E1B642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger.Worker", "Logger\Logger.Worker\Logger.Worker.csproj", "{D498E4FA-8543-4ECA-8002-1A746A3BF717}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logger.Worker", "Logger\Logger.Worker\Logger.Worker.csproj", "{D498E4FA-8543-4ECA-8002-1A746A3BF717}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger.Domain", "Logger\Logger.Domain\Logger.Domain.csproj", "{720350A3-DC92-43A6-820F-0B5C138ACDC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logger.Domain", "Logger\Logger.Domain\Logger.Domain.csproj", "{720350A3-DC92-43A6-820F-0B5C138ACDC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger.Repository", "Logger\Logger.Repository\Logger.Repository.csproj", "{3627C840-7B46-4224-9759-AE5A858A2993}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logger.Repository", "Logger\Logger.Repository\Logger.Repository.csproj", "{3627C840-7B46-4224-9759-AE5A858A2993}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{23789AA9-16BF-4EFC-8A0B-E1D266719F3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger.Tests", "Logger\Logger.Tests\Logger.Tests.csproj", "{281415C8-B8CC-4974-9C29-3ABE86AEF314}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logger.Tests", "Logger\Logger.Tests\Logger.Tests.csproj", "{281415C8-B8CC-4974-9C29-3ABE86AEF314}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmailProcessor", "EmailProcessor", "{4846DBE9-99F8-422F-96D2-C9C824837094}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessor.Worker", "EmailProcessor\EmailProcessor.Worker\EmailProcessor.Worker.csproj", "{1524EB07-24EC-4C7B-8B23-942E08161C25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailProcessor.Worker", "EmailProcessor\EmailProcessor.Worker\EmailProcessor.Worker.csproj", "{1524EB07-24EC-4C7B-8B23-942E08161C25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessor.Contracts", "EmailProcessor\EmailProcessor.Contracts\EmailProcessor.Contracts.csproj", "{AA2CC785-82E9-4172-9F97-C1DF8942BEB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailProcessor.Contracts", "EmailProcessor\EmailProcessor.Contracts\EmailProcessor.Contracts.csproj", "{AA2CC785-82E9-4172-9F97-C1DF8942BEB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessor.Domain", "EmailProcessor\EmailProcessor.Domain\EmailProcessor.Domain.csproj", "{1682065D-C0C7-4681-8D1D-740C331DE563}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailProcessor.Domain", "EmailProcessor\EmailProcessor.Domain\EmailProcessor.Domain.csproj", "{1682065D-C0C7-4681-8D1D-740C331DE563}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Domain", "Common\Common.Domain\Common.Domain.csproj", "{9BA21B82-944C-40F4-9D7B-66F5F54691FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Domain", "Common\Common.Domain\Common.Domain.csproj", "{9BA21B82-944C-40F4-9D7B-66F5F54691FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger.Contracts", "Logger\Logger.Contracts\Logger.Contracts.csproj", "{3FC0F9DF-C7CB-4763-A02A-142D08C626DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,10 @@ Global
 		{9BA21B82-944C-40F4-9D7B-66F5F54691FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BA21B82-944C-40F4-9D7B-66F5F54691FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BA21B82-944C-40F4-9D7B-66F5F54691FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FC0F9DF-C7CB-4763-A02A-142D08C626DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FC0F9DF-C7CB-4763-A02A-142D08C626DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FC0F9DF-C7CB-4763-A02A-142D08C626DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FC0F9DF-C7CB-4763-A02A-142D08C626DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,6 +128,7 @@ Global
 		{AA2CC785-82E9-4172-9F97-C1DF8942BEB6} = {4846DBE9-99F8-422F-96D2-C9C824837094}
 		{1682065D-C0C7-4681-8D1D-740C331DE563} = {4846DBE9-99F8-422F-96D2-C9C824837094}
 		{9BA21B82-944C-40F4-9D7B-66F5F54691FB} = {F89DDBF4-78D3-4FA4-81C8-6A2F8426DB74}
+		{3FC0F9DF-C7CB-4763-A02A-142D08C626DD} = {BEF8B4F5-8099-48B0-B183-7828E3E1B642}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D413C04-BBDF-4312-BF0A-538FCC98BD5F}
