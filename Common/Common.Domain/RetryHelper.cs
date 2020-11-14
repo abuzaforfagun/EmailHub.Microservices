@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Polly;
 
@@ -16,7 +14,7 @@ namespace Common.Domain
                 {
                     count++;
                     return action(count);
-                }));
+                }, ct));
 
             await fallbackPolicy.ExecuteAsync(() => action(count));
         }

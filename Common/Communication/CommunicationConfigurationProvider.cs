@@ -12,6 +12,7 @@ namespace Communication
         }
 
         public string GetQueueName<T>(T item) =>
-            _config.Queues?.SingleOrDefault(s => s.Contractor == item?.GetType().FullName)?.Name;
+            _config.Queues?
+                .SingleOrDefault(s => s.Contractor == item?.GetType().FullName)?.Name;
     }
 }

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EmailProcessor.Services
@@ -12,11 +10,9 @@ namespace EmailProcessor.Services
 
         public EmailProcessorFactory(IServiceProvider serviceProvider)
         {
-            using (var serviceProviderScope = serviceProvider.CreateScope())
-            {
-                var processor = serviceProviderScope.ServiceProvider.GetServices<IEmailProcessor>();
-                _emailProcessors.AddRange(processor);
-            }
+            using var serviceProviderScope = serviceProvider.CreateScope();
+            var processor = serviceProviderScope.ServiceProvider.GetServices<IEmailProcessor>();
+            _emailProcessors.AddRange(processor);
         }
 
         public IEmailProcessor GetEmailProcessor(int index)

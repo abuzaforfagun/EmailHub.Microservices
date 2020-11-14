@@ -11,15 +11,14 @@ namespace Communication.Extensions
         {
             foreach (var queue in busConfig.Queues)
             {
-                using (var scope = serviceProvider.CreateScope())
-                {
-                    var bus = scope.ServiceProvider.GetRequiredService<IDistributedConsumer>();
-                    var type = queueModel.Assembly.GetTypes().Single((t) => t.FullName == queue.Contractor);
+                using var scope = serviceProvider.CreateScope();
+                var bus = scope.ServiceProvider.GetRequiredService<IDistributedConsumer>();
+                var type = queueModel.Assembly.GetTypes()
+                                .Single((t) => t.FullName == queue.Contractor);
 
-                    var method = bus.GetType().GetMethod("RegisterQueueHandler");
-                    var generic = method.MakeGenericMethod(type);
-                    generic.Invoke(bus, new object[] { queue.Name });
-                }
+                var method = bus.GetType().GetMethod("RegisterQueueHandler");
+                var generic = method.MakeGenericMethod(type);
+                generic.Invoke(bus, new object[] { queue.Name });
             }
         }
     }

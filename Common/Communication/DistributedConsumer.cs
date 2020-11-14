@@ -43,11 +43,9 @@ namespace Communication
 
         private async Task ProcessMessagesAsync<T>(Message message, CancellationToken token) where T:IRequest
         {
-            using (var serviceProviderScope = _serviceProvider.CreateScope())
-            {
-                var payload = JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(message.Body)) as IRequest;
-                await Process(payload, serviceProviderScope.ServiceProvider);
-            }
+            using var serviceProviderScope = _serviceProvider.CreateScope();
+            var payload = JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(message.Body)) as IRequest;
+            await Process(payload, serviceProviderScope.ServiceProvider);
         }
 
         private Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)

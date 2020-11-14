@@ -20,7 +20,8 @@ namespace EmailProcessor.Tests.Domain.Features.SendEmails
             factoryMock.Setup(m => m.GetEmailProcessor(It.IsAny<int>()))
                 .Returns(emailProcessorMock.Object);
             var retryHelperMock = new Mock<IRetryHelper>();
-            retryHelperMock.Setup(m => m.InvokeAsync(It.IsAny<Func<int, Task>>())).Returns(Task.CompletedTask);
+            retryHelperMock.Setup(m => m.InvokeAsync(It.IsAny<Func<int, Task>>()))
+                .Returns(Task.CompletedTask);
             var handler = new SendEmail.CommandHandler(factoryMock.Object, retryHelperMock.Object);
 
             await handler.Handle(new SendEmailCommand());

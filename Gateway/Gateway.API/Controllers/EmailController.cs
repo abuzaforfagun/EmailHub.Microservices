@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using EmailProcessor.Contracts;
-using Gateway.Domain.Features.SendEmail;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
