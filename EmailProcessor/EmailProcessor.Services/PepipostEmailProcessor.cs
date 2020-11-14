@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EmailProcessor.Contracts;
+using Newtonsoft.Json;
 using Pepipost;
 using Pepipost.Controllers;
 using Pepipost.Models;
@@ -16,9 +18,14 @@ namespace EmailProcessor.Services
         {
             _mailSendController = client.MailSend;
         }
-        public Task SendEmailAsync(SendEmailCommand emailDetails)
+        public async Task SendEmailAsync(SendEmailCommand emailDetails)
         {
-            return _mailSendController.CreateGeneratethemailsendrequestAsync(CreateBody(emailDetails), Api);
+            var result = await _mailSendController.CreateGeneratethemailsendrequestAsync(CreateBody(emailDetails), Api);
+            var res = JsonConvert.DeserializeObject<PepipostError>(result.ToString());
+            if (res.Error.Count > 0)
+            {
+                throw new Exception();
+            }
         }
 
         private Send CreateBody(SendEmailCommand emailDetails)
@@ -33,7 +40,6 @@ namespace EmailProcessor.Services
 
             var recivers = new Personalizations
             {
-                //Attributes = APIHelper.JsonDeserialize<Object>("{\"name\":\"Pepi\",\"love\":\"Email\"}"),
                 To = new List<EmailStruct>
                 {
                     reciverDetails

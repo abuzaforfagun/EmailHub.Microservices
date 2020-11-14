@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Net;
+using System.Threading.Tasks;
 using EmailProcessor.Contracts;
 using SendGrid;
 using SendGrid.Helpers.Mail;
@@ -21,6 +23,11 @@ namespace EmailProcessor.Services
             var to = new EmailAddress(emailDetails.ReciverEmail, emailDetails.ReciverName);
             var msg = MailHelper.CreateSingleEmail(from, to, subject, default, htmlContent);
             var response = await _senderClient.SendEmailAsync(msg).ConfigureAwait(false);
+
+            if (response.StatusCode != HttpStatusCode.Accepted)
+            {
+                throw new Exception();
+            }
         }
     }
 }
