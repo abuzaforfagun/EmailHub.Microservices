@@ -9,7 +9,9 @@ using Communication;
 using Communication.Extensions;
 using EmailProcessor.Contracts;
 using EmailProcessor.Domain;
+using EmailProcessor.Services;
 using MediatR;
+using SendGrid;
 
 namespace EmailProcessor.API
 {
@@ -37,6 +39,12 @@ namespace EmailProcessor.API
 
             services.AddMediatR(typeof(DomainConfiguration));
             services.AddCommunincationService();
+
+            services.AddScoped(s =>
+                new SendGridClient("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"));
+
+            services.AddScoped<IEmailProcessor, SenderGridEmailProcessor>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider, ServiceBusConfiguration busConfig)
