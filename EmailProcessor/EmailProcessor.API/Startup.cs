@@ -11,6 +11,7 @@ using EmailProcessor.Contracts;
 using EmailProcessor.Domain;
 using EmailProcessor.Services;
 using MediatR;
+using Pepipost;
 using SendGrid;
 
 namespace EmailProcessor.API
@@ -42,8 +43,9 @@ namespace EmailProcessor.API
 
             services.AddScoped(s =>
                 new SendGridClient("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"));
+            services.AddScoped(p => new PepipostClient("84bc7a98af555bed1db40e3b66e4f5b2"));
 
-            services.AddScoped<IEmailProcessor, SenderGridEmailProcessor>();
+            services.AddScoped<IEmailProcessor, PepipostEmailProcessor>();
 
         }
 

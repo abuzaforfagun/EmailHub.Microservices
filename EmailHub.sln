@@ -47,6 +47,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailProcessor.API", "Email
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logger.API", "Logger\Logger.API\Logger.API.csproj", "{DDBA4006-924C-4974-ADCF-866AC8D4A26B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessor.Services", "EmailProcessor\EmailProcessor.Services\EmailProcessor.Services.csproj", "{8B01AD36-473A-4A7B-AC4A-F9B8E69C3FF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,10 @@ Global
 		{DDBA4006-924C-4974-ADCF-866AC8D4A26B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDBA4006-924C-4974-ADCF-866AC8D4A26B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDBA4006-924C-4974-ADCF-866AC8D4A26B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B01AD36-473A-4A7B-AC4A-F9B8E69C3FF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B01AD36-473A-4A7B-AC4A-F9B8E69C3FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B01AD36-473A-4A7B-AC4A-F9B8E69C3FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B01AD36-473A-4A7B-AC4A-F9B8E69C3FF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,6 +142,7 @@ Global
 		{294642C8-A95E-48D8-B267-A35EEB880D96} = {BEF8B4F5-8099-48B0-B183-7828E3E1B642}
 		{A65576E2-406D-43A6-AD2D-52AE89352B0D} = {4846DBE9-99F8-422F-96D2-C9C824837094}
 		{DDBA4006-924C-4974-ADCF-866AC8D4A26B} = {BEF8B4F5-8099-48B0-B183-7828E3E1B642}
+		{8B01AD36-473A-4A7B-AC4A-F9B8E69C3FF5} = {4846DBE9-99F8-422F-96D2-C9C824837094}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D413C04-BBDF-4312-BF0A-538FCC98BD5F}
