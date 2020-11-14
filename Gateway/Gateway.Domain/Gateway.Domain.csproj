@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Domain\Common.Domain.csproj" />
+    <ProjectReference Include="..\..\Common\Communication\Communication.csproj" />
     <ProjectReference Include="..\..\EmailProcessor\EmailProcessor.Contracts\EmailProcessor.Contracts.csproj" />
     <ProjectReference Include="..\..\Logger\Logger.Contracts\Logger.Contracts.csproj" />
   </ItemGroup>

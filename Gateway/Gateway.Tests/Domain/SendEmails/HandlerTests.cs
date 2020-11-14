@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
+using Common.Domain;
 using Common.Domain.Extensions.UnitTests;
 using Communication;
 using EmailProcessor.Contracts;

@@ -1,5 +1,5 @@
 ﻿using System;
-using Communication;
+using Common.Domain;
 using MediatR;
 
 namespace Logger.Contracts

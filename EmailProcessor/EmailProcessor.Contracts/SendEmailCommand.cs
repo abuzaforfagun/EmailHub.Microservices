@@ -1,4 +1,4 @@
-﻿using Communication;
+﻿using Common.Domain;
 using MediatR;
 
 namespace EmailProcessor.Contracts

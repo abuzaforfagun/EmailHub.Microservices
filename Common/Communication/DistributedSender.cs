@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Domain;
 using Microsoft.Azure.ServiceBus;
 using Microsoft.Azure.ServiceBus.Management;
 using Newtonsoft.Json;
@@ -22,7 +23,7 @@ namespace Communication
 
             var queueClient = new QueueClient(_config.PrimaryKey, queueName);
 
-            string data = await Task.Factory.StartNew(() => JsonConvert.SerializeObject(payload));
+            var data = await Task.Factory.StartNew(() => JsonConvert.SerializeObject(payload));
             Message message = new Message(Encoding.UTF8.GetBytes(data)) {MessageId = Guid.NewGuid().ToString()};
             await queueClient.SendAsync(message);
         }

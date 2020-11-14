@@ -1,4 +1,4 @@
-﻿namespace Communication
+﻿namespace Common.Domain
 {
     public interface IDistributedCommand
     {
