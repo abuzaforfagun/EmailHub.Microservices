@@ -4,6 +4,6 @@ namespace Communication
 {
     public interface IDistributedSender
     {
-        Task SendMessageAsync(object payload, string queueName);
+        Task SendMessageAsync(IDistributedCommand payload, string queueName);
     }
 }

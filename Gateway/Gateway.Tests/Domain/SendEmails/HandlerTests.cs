@@ -16,7 +16,7 @@ namespace Gateway.Tests.Domain.SendEmails
         public async Task Handler_Should_Send_Messages_To_DistributedSender()
         {
             var distributedSenderMock = new Mock<IDistributedSender>();
-            distributedSenderMock.Setup(m => m.SendMessageAsync(It.IsAny<object>(), It.IsAny<string>()))
+            distributedSenderMock.Setup(m => m.SendMessageAsync(It.IsAny<IDistributedCommand>(), It.IsAny<string>()))
                 .Returns(Task.CompletedTask);
 
             var mapperMock = new Mock<IMapper>();
@@ -31,7 +31,7 @@ namespace Gateway.Tests.Domain.SendEmails
 
             await handler.Handle(new SendEmailCommand(), default);
 
-            distributedSenderMock.Verify(d => d.SendMessageAsync(It.IsAny<object>(), It.IsAny<string>()), Times.Exactly(2));
+            distributedSenderMock.Verify(d => d.SendMessageAsync(It.IsAny<IDistributedCommand>(), It.IsAny<string>()), Times.Exactly(2));
         }
     }
 }

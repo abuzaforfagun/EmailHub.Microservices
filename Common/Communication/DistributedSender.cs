@@ -16,15 +16,14 @@ namespace Communication
             _config = config;
         }
 
-        public async Task SendMessageAsync(object payload, string queueName)
+        public async Task SendMessageAsync(IDistributedCommand payload, string queueName)
         {
             await InitializeQueue(queueName);
 
             var queueClient = new QueueClient(_config.PrimaryKey, queueName);
 
             string data = await Task.Factory.StartNew(() => JsonConvert.SerializeObject(payload));
-            Message message = new Message(Encoding.UTF8.GetBytes(data));
-            message.MessageId = Guid.NewGuid().ToString();
+            Message message = new Message(Encoding.UTF8.GetBytes(data)) {MessageId = Guid.NewGuid().ToString()};
             await queueClient.SendAsync(message);
         }
 
