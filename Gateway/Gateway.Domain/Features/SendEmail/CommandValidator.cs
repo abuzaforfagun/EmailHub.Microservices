@@ -12,10 +12,16 @@ namespace Gateway.Domain.Features.SendEmail
                 RuleFor(c => c.SenderEmail)
                     .NotEmpty()
                     .EmailAddress();
+                RuleFor(c => c.Subject)
+                    .NotEmpty();
                 RuleFor(c => c.Content).NotEmpty();
                 RuleFor(c => c.ReciverEmail)
                     .NotEmpty()
                     .EmailAddress();
+                RuleFor(c => c.SenderName)
+                    .NotEmpty();
+                RuleFor(c => c.ReciverName)
+                    .NotEmpty();
             }
         }
     }
