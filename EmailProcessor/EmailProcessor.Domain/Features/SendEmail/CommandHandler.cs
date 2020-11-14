@@ -1,16 +1,23 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using EmailProcessor.Contracts;
+using EmailProcessor.Services;
 using MediatR;
 
 namespace EmailProcessor.Domain.Features.SendEmail
 {
     public class CommandHandler : AsyncRequestHandler<SendEmailCommand>
     {
-        protected override Task Handle(SendEmailCommand request, CancellationToken cancellationToken)
+        private readonly IEmailProcessorFactory _emailProcessorFactory;
+
+        public CommandHandler(IEmailProcessorFactory emailProcessorFactory)
         {
-            return Task.CompletedTask;
+            _emailProcessorFactory = emailProcessorFactory;
+        }
+        protected override async Task Handle(SendEmailCommand request, CancellationToken cancellationToken)
+        {
+            var processor = _emailProcessorFactory.GetEmailProcessor(0);
+            await processor.SendEmailAsync(request);
         }
     }
 }
