@@ -22,7 +22,7 @@ namespace EmailProcessor.Services
         {
             var result = await _mailSendController.CreateGeneratethemailsendrequestAsync(CreateBody(emailDetails), Api);
             var res = JsonConvert.DeserializeObject<PepipostError>(result.ToString());
-            if (res.Error.Count > 0)
+            if (res.Error != null)
             {
                 throw new Exception();
             }
