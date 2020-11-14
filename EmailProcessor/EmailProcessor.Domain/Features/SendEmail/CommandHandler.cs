@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Common.Domain;
 using EmailProcessor.Contracts;
 using EmailProcessor.Services;
 using MediatR;
@@ -16,8 +17,11 @@ namespace EmailProcessor.Domain.Features.SendEmail
         }
         protected override async Task Handle(SendEmailCommand request, CancellationToken cancellationToken)
         {
-            var processor = _emailProcessorFactory.GetEmailProcessor(0);
-            await processor.SendEmailAsync(request);
+            await RetryHelper.InvokeAsync(async (retryAttempt) =>
+            {
+                var processor = _emailProcessorFactory.GetEmailProcessor(retryAttempt);
+                await processor.SendEmailAsync(request);
+            });
         }
     }
 }

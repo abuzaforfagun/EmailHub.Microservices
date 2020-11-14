@@ -6,10 +6,10 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Polly" Version="7.2.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Domain\Common.Domain.csproj" />
     <ProjectReference Include="..\EmailProcessor.Contracts\EmailProcessor.Contracts.csproj" />
     <ProjectReference Include="..\EmailProcessor.Services\EmailProcessor.Services.csproj" />
   </ItemGroup>
