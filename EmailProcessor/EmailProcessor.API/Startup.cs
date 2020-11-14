@@ -46,6 +46,8 @@ namespace EmailProcessor.API
             services.AddScoped(p => new PepipostClient("84bc7a98af555bed1db40e3b66e4f5b2"));
 
             services.AddScoped<IEmailProcessor, PepipostEmailProcessor>();
+            services.AddScoped<IEmailProcessor, SenderGridEmailProcessor>();
+            services.AddScoped<IEmailProcessorFactory, EmailProcessorFactory>();
 
         }
 
