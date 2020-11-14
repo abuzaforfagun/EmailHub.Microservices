@@ -7,23 +7,26 @@ using MediatR;
 
 namespace EmailProcessor.Domain.Features.SendEmail
 {
-    public class CommandHandler : AsyncRequestHandler<SendEmailCommand>
+    public partial class SendEmail
     {
-        private readonly IEmailProcessorFactory _emailProcessorFactory;
-        private readonly IRetryHelper _retryHelper;
+        public class CommandHandler : AsyncRequestHandler<SendEmailCommand>
+        {
+            private readonly IEmailProcessorFactory _emailProcessorFactory;
+            private readonly IRetryHelper _retryHelper;
 
-        public CommandHandler(IEmailProcessorFactory emailProcessorFactory, IRetryHelper retryHelper)
-        {
-            _emailProcessorFactory = emailProcessorFactory;
-            _retryHelper = retryHelper;
-        }
-        protected override async Task Handle(SendEmailCommand request, CancellationToken cancellationToken)
-        {
-            await _retryHelper.InvokeAsync(async (retryAttempt) =>
+            public CommandHandler(IEmailProcessorFactory emailProcessorFactory, IRetryHelper retryHelper)
             {
-                var processor = _emailProcessorFactory.GetEmailProcessor(retryAttempt);
-                await processor.SendEmailAsync(request);
-            });
+                _emailProcessorFactory = emailProcessorFactory;
+                _retryHelper = retryHelper;
+            }
+            protected override async Task Handle(SendEmailCommand request, CancellationToken cancellationToken)
+            {
+                await _retryHelper.InvokeAsync(async (retryAttempt) =>
+                {
+                    var processor = _emailProcessorFactory.GetEmailProcessor(retryAttempt);
+                    await processor.SendEmailAsync(request);
+                });
+            }
         }
     }
 }

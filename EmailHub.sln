@@ -49,6 +49,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logger.API", "Logger\Logger
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessor.Services", "EmailProcessor\EmailProcessor.Services\EmailProcessor.Services.csproj", "{8B01AD36-473A-4A7B-AC4A-F9B8E69C3FF5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E5775EB3-7515-4E49-8E0A-31AFF36D424B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessor.Tests", "EmailProcessor\EmailProcessor.Tests\EmailProcessor.Tests.csproj", "{9829343E-65A6-4E7B-95FE-8AA1470A9FF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,6 +123,10 @@ Global
 		{8B01AD36-473A-4A7B-AC4A-F9B8E69C3FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B01AD36-473A-4A7B-AC4A-F9B8E69C3FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B01AD36-473A-4A7B-AC4A-F9B8E69C3FF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9829343E-65A6-4E7B-95FE-8AA1470A9FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9829343E-65A6-4E7B-95FE-8AA1470A9FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9829343E-65A6-4E7B-95FE-8AA1470A9FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9829343E-65A6-4E7B-95FE-8AA1470A9FF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,6 +151,8 @@ Global
 		{A65576E2-406D-43A6-AD2D-52AE89352B0D} = {4846DBE9-99F8-422F-96D2-C9C824837094}
 		{DDBA4006-924C-4974-ADCF-866AC8D4A26B} = {BEF8B4F5-8099-48B0-B183-7828E3E1B642}
 		{8B01AD36-473A-4A7B-AC4A-F9B8E69C3FF5} = {4846DBE9-99F8-422F-96D2-C9C824837094}
+		{E5775EB3-7515-4E49-8E0A-31AFF36D424B} = {4846DBE9-99F8-422F-96D2-C9C824837094}
+		{9829343E-65A6-4E7B-95FE-8AA1470A9FF3} = {E5775EB3-7515-4E49-8E0A-31AFF36D424B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D413C04-BBDF-4312-BF0A-538FCC98BD5F}

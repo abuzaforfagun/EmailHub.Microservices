@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Logger.Entities\Logger.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\AddMailDeliveryLog\" />
+  </ItemGroup>
+
 </Project>
