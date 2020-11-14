@@ -38,13 +38,16 @@ namespace EmailProcessor.API
             var servicebusConfiguration = new ServiceBusConfiguration();
             Configuration.GetSection("Servicebus").Bind(servicebusConfiguration);
             services.AddSingleton(servicebusConfiguration);
+           
+            var emailServiceConfiguration = new EmailServiceConfiguration();
+            Configuration.GetSection("EmailProcessor").Bind(servicebusConfiguration);
 
-            services.AddMediatR(typeof(DomainConfiguration));
+            services.AddMediatR(typeof(EmailServiceConfiguration));
             services.AddCommunincationService();
 
             services.AddScoped(s =>
-                new SendGridClient("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"));
-            services.AddScoped(p => new PepipostClient("84bc7a98af555bed1db40e3b66e4f5b2"));
+                new SendGridClient(emailServiceConfiguration.SenderGrid));
+            services.AddScoped(p => new PepipostClient(emailServiceConfiguration.Pepipost));
 
             services.AddScoped<IRetryHelper, RetryHelper>();
             services.AddScoped<IEmailProcessor, PepipostEmailProcessor>();
