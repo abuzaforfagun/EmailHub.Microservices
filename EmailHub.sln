@@ -53,6 +53,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E5775EB3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessor.Tests", "EmailProcessor\EmailProcessor.Tests\EmailProcessor.Tests.csproj", "{9829343E-65A6-4E7B-95FE-8AA1470A9FF3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{B63CA81A-7686-4CD9-9BBB-2C460B3026BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailHub.Console", "EmailHub.Console\EmailHub.Console.csproj", "{DD11073B-3759-43E9-99C1-4523749A941E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +131,10 @@ Global
 		{9829343E-65A6-4E7B-95FE-8AA1470A9FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9829343E-65A6-4E7B-95FE-8AA1470A9FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9829343E-65A6-4E7B-95FE-8AA1470A9FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD11073B-3759-43E9-99C1-4523749A941E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD11073B-3759-43E9-99C1-4523749A941E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD11073B-3759-43E9-99C1-4523749A941E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD11073B-3759-43E9-99C1-4523749A941E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,6 +161,7 @@ Global
 		{8B01AD36-473A-4A7B-AC4A-F9B8E69C3FF5} = {4846DBE9-99F8-422F-96D2-C9C824837094}
 		{E5775EB3-7515-4E49-8E0A-31AFF36D424B} = {4846DBE9-99F8-422F-96D2-C9C824837094}
 		{9829343E-65A6-4E7B-95FE-8AA1470A9FF3} = {E5775EB3-7515-4E49-8E0A-31AFF36D424B}
+		{DD11073B-3759-43E9-99C1-4523749A941E} = {B63CA81A-7686-4CD9-9BBB-2C460B3026BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D413C04-BBDF-4312-BF0A-538FCC98BD5F}
