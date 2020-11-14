@@ -14,6 +14,7 @@ namespace Logger.Repository.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     SenderEmail = table.Column<string>(type: "text", nullable: true),
                     ReciverEmail = table.Column<string>(type: "text", nullable: true),
+                    Subject = table.Column<string>(type: "text", nullable: true),
                     SendOn = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>

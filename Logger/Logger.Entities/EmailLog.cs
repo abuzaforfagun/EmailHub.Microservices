@@ -7,6 +7,7 @@ namespace Logger.Entities
         public Guid Id { get; set; }
         public string SenderEmail { get; set; }
         public string ReciverEmail { get; set; }
+        public string Subject { get; set; }
         public DateTime SendOn { get; set; }
     }
 }

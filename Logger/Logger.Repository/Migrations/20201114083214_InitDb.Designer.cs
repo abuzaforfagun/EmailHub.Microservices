@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Logger.Repository.Migrations
 {
     [DbContext(typeof(LogDbContext))]
-    [Migration("20201113165043_InitDb")]
+    [Migration("20201114083214_InitDb")]
     partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,13 +27,16 @@ namespace Logger.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("FromEmail")
+                    b.Property<string>("ReciverEmail")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("SendOn")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("ToEmail")
+                    b.Property<string>("SenderEmail")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Subject")
                         .HasColumnType("text");
 
                     b.HasKey("Id");

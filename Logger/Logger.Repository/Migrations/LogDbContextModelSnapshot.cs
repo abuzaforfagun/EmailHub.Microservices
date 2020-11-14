@@ -25,13 +25,16 @@ namespace Logger.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("FromEmail")
+                    b.Property<string>("ReciverEmail")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("SendOn")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("ToEmail")
+                    b.Property<string>("SenderEmail")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Subject")
                         .HasColumnType("text");
 
                     b.HasKey("Id");

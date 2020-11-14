@@ -10,5 +10,6 @@ namespace Logger.Contracts
         public DateTime SendOn { get; set; }
         public string SenderEmail { get; set; }
         public string ReciverEmail { get; set; }
+        public string Subject { get; set; }
     }
 }
