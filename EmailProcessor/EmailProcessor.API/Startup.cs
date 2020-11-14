@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
+using Common.Domain;
 using Communication;
 using Communication.Extensions;
 using EmailProcessor.Contracts;
@@ -45,6 +46,7 @@ namespace EmailProcessor.API
                 new SendGridClient("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"));
             services.AddScoped(p => new PepipostClient("84bc7a98af555bed1db40e3b66e4f5b2"));
 
+            services.AddScoped<IRetryHelper, RetryHelper>();
             services.AddScoped<IEmailProcessor, PepipostEmailProcessor>();
             services.AddScoped<IEmailProcessor, SenderGridEmailProcessor>();
             services.AddScoped<IEmailProcessorFactory, EmailProcessorFactory>();

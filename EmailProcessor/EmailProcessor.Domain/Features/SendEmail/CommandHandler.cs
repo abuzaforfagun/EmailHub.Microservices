@@ -10,14 +10,16 @@ namespace EmailProcessor.Domain.Features.SendEmail
     public class CommandHandler : AsyncRequestHandler<SendEmailCommand>
     {
         private readonly IEmailProcessorFactory _emailProcessorFactory;
+        private readonly IRetryHelper _retryHelper;
 
-        public CommandHandler(IEmailProcessorFactory emailProcessorFactory)
+        public CommandHandler(IEmailProcessorFactory emailProcessorFactory, IRetryHelper retryHelper)
         {
             _emailProcessorFactory = emailProcessorFactory;
+            _retryHelper = retryHelper;
         }
         protected override async Task Handle(SendEmailCommand request, CancellationToken cancellationToken)
         {
-            await RetryHelper.InvokeAsync(async (retryAttempt) =>
+            await _retryHelper.InvokeAsync(async (retryAttempt) =>
             {
                 var processor = _emailProcessorFactory.GetEmailProcessor(retryAttempt);
                 await processor.SendEmailAsync(request);
