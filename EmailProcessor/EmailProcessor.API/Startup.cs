@@ -40,7 +40,7 @@ namespace EmailProcessor.API
             services.AddSingleton(servicebusConfiguration);
            
             var emailServiceConfiguration = new EmailServiceConfiguration();
-            Configuration.GetSection("EmailProcessor").Bind(servicebusConfiguration);
+            Configuration.GetSection("EmailProcessor").Bind(emailServiceConfiguration);
 
             services.AddMediatR(typeof(EmailServiceConfiguration));
             services.AddCommunincationService();
