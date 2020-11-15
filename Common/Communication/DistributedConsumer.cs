@@ -14,24 +14,22 @@ namespace Communication
     {
         private QueueClient _queueClient;
         private readonly ILogger _logger;
-        private readonly ServiceBusConfiguration _config;
         private readonly IServiceProvider _serviceProvider;
 
-        public DistributedConsumer(ILogger<object> logger, ServiceBusConfiguration config, IServiceProvider serviceProvider)
+        public DistributedConsumer(ILogger<object> logger, IServiceProvider serviceProvider)
         {
             _logger = logger;
-            _config = config;
             _serviceProvider = serviceProvider;
         }
 
-        public void RegisterQueueHandler<T>(string queueName) where T:IRequest
+        public void RegisterQueueHandler<T>(string primaryKey, string queueName) where T:IRequest
         {
             var messageHandlerOptions = new MessageHandlerOptions(ExceptionReceivedHandler)
             {
                 MaxConcurrentCalls = 1,
                 AutoComplete = true,
             };
-            _queueClient = new QueueClient(_config.PrimaryKey, queueName);
+            _queueClient = new QueueClient(primaryKey, queueName);
             _queueClient.RegisterMessageHandler(ProcessMessagesAsync<T>, messageHandlerOptions);
         }
 

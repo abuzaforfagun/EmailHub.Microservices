@@ -5,7 +5,7 @@ namespace Communication
 {
     public interface IDistributedConsumer
     {
-        void RegisterQueueHandler<T>(string queueName) where T : IRequest;
+        void RegisterQueueHandler<T>(string primaryKey, string queueName) where T : IRequest;
         Task CloseQueueAsync();
     }
 }
