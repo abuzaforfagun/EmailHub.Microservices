@@ -27,7 +27,7 @@ namespace Communication
             var messageHandlerOptions = new MessageHandlerOptions(ExceptionReceivedHandler)
             {
                 MaxConcurrentCalls = 1,
-                AutoComplete = true,
+                AutoComplete = false,
             };
             _queueClient = new QueueClient(primaryKey, queueName);
             _queueClient.RegisterMessageHandler(ProcessMessagesAsync<T>, messageHandlerOptions);
@@ -44,6 +44,7 @@ namespace Communication
             using var serviceProviderScope = _serviceProvider.CreateScope();
             var payload = JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(message.Body)) as IRequest;
             await Process(payload, serviceProviderScope.ServiceProvider);
+            await _queueClient.CompleteAsync(message.SystemProperties.LockToken);
         }
 
         private Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
