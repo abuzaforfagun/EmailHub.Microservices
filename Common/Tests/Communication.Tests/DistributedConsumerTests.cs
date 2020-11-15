@@ -23,8 +23,7 @@ namespace Communication.Tests
                 .Setup(x => x.GetService(typeof(IMediator)))
                 .Returns(mediatorMock.Object);
 
-            var consumer = new DistributedConsumer(loggerMock.Object, It.IsAny<ServiceBusConfiguration>(),
-                serviceProviderMock.Object);
+            var consumer = new DistributedConsumer(loggerMock.Object, serviceProviderMock.Object);
 
             // Act
             await consumer.Process("abc", serviceProviderMock.Object);

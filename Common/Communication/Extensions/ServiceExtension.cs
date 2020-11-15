@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Communication.Extensions
 {
-    public static class ApplicationBuilderExtension
+    public static class ServiceExtension
     {
-        public static void RegisterServiceBus(this IApplicationBuilder appBuilder, ServiceBusConfiguration busConfig, IServiceProvider serviceProvider, Type queueModel)
+        public static void AddCommunincationService(this IServiceCollection services)
+        {
+            services.AddSingleton<IDistributedConsumer, DistributedConsumer>();
+        }
+
+        public static void RegisterServiceBus(this IServiceProvider serviceProvider, ServiceBusConfiguration busConfig, Type queueModel)
         {
             foreach (var queue in busConfig.Queues)
             {

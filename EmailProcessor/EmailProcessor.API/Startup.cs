@@ -8,7 +8,6 @@ using System;
 using Common.Domain;
 using Communication;
 using Communication.Extensions;
-using EmailProcessor.Contracts;
 using EmailProcessor.Domain;
 using EmailProcessor.Services;
 using MediatR;
@@ -66,7 +65,7 @@ namespace EmailProcessor.API
             }
 
             app.UseHttpsRedirection();
-            app.RegisterServiceBus(busConfig, serviceProvider, typeof(SendEmailCommand));
+            //app.RegisterServiceBus(busConfig, serviceProvider, typeof(SendEmailCommand));
             
             app.UseRouting();
 
