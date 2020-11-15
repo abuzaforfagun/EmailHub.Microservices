@@ -12,7 +12,7 @@ namespace Gateway.Domain.Features.SendEmail
             public MappingConfiguration()
             {
                 CreateMap<SendEmailCommand, AddLogCommand>()
-                    .ForMember(d => d.Id, opt => opt.UseValue(Guid.NewGuid()))
+                    .ForMember(d => d.Id, opt => opt.MapFrom(d => Guid.NewGuid()))
                     .ForMember(d => d.SendOn, opt => opt.UseValue(DateTime.Now));
             }
         }
