@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Communication\Communication.csproj" />
-    <ProjectReference Include="..\..\EmailProcessor.Domain\EmailProcessor.Domain.csproj" />
-    <ProjectReference Include="..\..\EmailProcessor.Services\EmailProcessor.Services.csproj" />
+    <ProjectReference Include="..\..\Common\Communication\Communication.csproj" />
+    <ProjectReference Include="..\EmailProcessor.Domain\EmailProcessor.Domain.csproj" />
+    <ProjectReference Include="..\EmailProcessor.Services\EmailProcessor.Services.csproj" />
   </ItemGroup>
 </Project>
