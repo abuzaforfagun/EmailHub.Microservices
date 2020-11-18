@@ -33,9 +33,13 @@ namespace Logger.Worker
                     services.AddAutoMapper();
                     services.AddCommunincationService();
                     services.AddDbContext<LogDbContext>(
-                        options => options
-                            .UseNpgsql(hostContext.Configuration.GetConnectionString("LogDb"))
-                    );
+                        options =>
+                        {
+                            options
+                                .UseNpgsql(hostContext.Configuration.GetConnectionString("LogDb"), 
+                                x => x.MigrationsAssembly(typeof(LogDbContext).Assembly.FullName));
+                        });
+
                     services.AddUnitOfWork<LogDbContext>();
                     services.AddTransient<AddLog.IRepository, EmailLogsRepository>();
                     services.AddHostedService<Worker>();
