@@ -16,9 +16,11 @@ namespace EmailProcessor.Services
             _senderClient = senderClient;
         }
 
-        public async Task SendEmailAsync(SendEmailCommand emailDetails)
+        public async Task SendEmailAsync(SendEmailCommand emailDetails, EmailServiceConfiguration configuration)
         {
-            var from = new EmailAddress("mdabuzaforfagun@gmail.com", emailDetails.SenderName);
+            var from = new EmailAddress(
+                configuration.SenderGrid.IsSandbox ? configuration.SenderGrid.DefaultEmail : emailDetails.SenderEmail, 
+                emailDetails.SenderName);
             var (subject, htmlContent) = (emailDetails.Subject, emailDetails.Content);
             var to = new EmailAddress(emailDetails.ReciverEmail, emailDetails.ReciverName);
             var msg = MailHelper.CreateSingleEmail(from, to, subject, default, htmlContent);

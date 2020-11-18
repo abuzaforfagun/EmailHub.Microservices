@@ -1,13 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Common.Domain;
 using Communication;
 using Communication.Extensions;
-using EmailProcessor.Domain;
 using EmailProcessor.Services;
 using MediatR;
 using Microsoft.Extensions.Configuration;
@@ -33,13 +28,14 @@ namespace EmailProcessor.Worker
            
                     var emailServiceConfiguration = new EmailServiceConfiguration();
                     hostContext.Configuration.GetSection("EmailProcessor").Bind(emailServiceConfiguration);
+                    services.AddScoped(provider  => emailServiceConfiguration);
 
                     services.AddMediatR(typeof(EmailServiceConfiguration));
                     services.AddCommunincationService();
-
+                    
                     services.AddScoped(s =>
-                        new SendGridClient(emailServiceConfiguration.SenderGrid));
-                    services.AddScoped(p => new PepipostClient(emailServiceConfiguration.Pepipost));
+                        new SendGridClient(emailServiceConfiguration.SenderGrid.AppKey));
+                    services.AddScoped(p => new PepipostClient(emailServiceConfiguration.Pepipost.AppKey));
 
                     services.AddScoped<IRetryHelper, RetryHelper>();
                     services.AddScoped<IEmailProcessor, PepipostEmailProcessor>();

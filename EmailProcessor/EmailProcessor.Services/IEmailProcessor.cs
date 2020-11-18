@@ -5,6 +5,6 @@ namespace EmailProcessor.Services
 {
     public interface IEmailProcessor
     {
-        Task SendEmailAsync(SendEmailCommand emailDetails);
+        Task SendEmailAsync(SendEmailCommand emailDetails, EmailServiceConfiguration configuration);
     }
 }

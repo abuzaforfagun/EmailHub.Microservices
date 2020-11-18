@@ -18,8 +18,9 @@ namespace EmailProcessor.Services
         {
             _mailSendController = client.MailSend;
         }
-        public async Task SendEmailAsync(SendEmailCommand emailDetails)
+        public async Task SendEmailAsync(SendEmailCommand emailDetails, EmailServiceConfiguration configuration)
         {
+            emailDetails.SenderEmail = configuration.Pepipost.IsSandbox ? configuration.Pepipost.DefaultEmail : emailDetails.SenderEmail;
             var result = await _mailSendController.CreateGeneratethemailsendrequestAsync(CreateBody(emailDetails), Api);
             var res = JsonConvert.DeserializeObject<PepipostError>(result.ToString());
             if (res.Error != null)
@@ -52,7 +53,7 @@ namespace EmailProcessor.Services
             {
                 From = new From
                 {
-                    Email = "faguncloud@pepisandbox.com",
+                    Email = emailDetails.SenderEmail,
                     Name = emailDetails.SenderName,
                 },
                 Subject = emailDetails.Subject,
