@@ -22,7 +22,7 @@ namespace EmailProcessor.Tests.Domain.Features.SendEmails
             var retryHelperMock = new Mock<IRetryHelper>();
             retryHelperMock.Setup(m => m.InvokeAsync(It.IsAny<Func<int, Task>>()))
                 .Returns(Task.CompletedTask);
-            var handler = new SendEmail.CommandHandler(factoryMock.Object, retryHelperMock.Object);
+            var handler = new SendEmail.CommandHandler(factoryMock.Object, retryHelperMock.Object, It.IsAny<EmailServiceConfiguration>());
 
             await handler.Handle(new SendEmailCommand());
 
