@@ -26,7 +26,7 @@
 * Provide POSTGRES database connection string inside ```appsettings.json/appsettings.development.json``` of ```Logger->Logger.Worker``` folder.
 
 ## Executing Application
-* Option 1. Run the application from VS
+* Option 1. Use Gateway.Api, Logger.Worker and EmailProcessor.Worker as start-up project. And run the application from VS.
 * Option 2. Go to the root folder of the project. And run ```docker-compose up```. Use ```docker-compose up -f docker-compose-slow-connection.yml``` if you face any issue to restore nuget packages.
 
 ### Running console application
