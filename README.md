@@ -19,9 +19,9 @@
 * Docker
 
 ## Envoirnment Setup
-* Add servicebus primary key inside appsettings of ```Gateway->Gateway.Api->appsettings.json/appsettings.development.json```.
-* Add servicebus primary key inside appsettings of ```EmailProcessor->EmailProcessor.Worker->appsettings.json/appsettings.development.json```.
-* Add servicebus primary key inside appsettings of ```Logger->Logger.Worker->appsettings.json/appsettings.development.json```.
+* Add servicebus primary connection string inside appsettings of ```Gateway->Gateway.Api->appsettings.json/appsettings.development.json```.
+* Add servicebus primary connection string inside appsettings of ```EmailProcessor->EmailProcessor.Worker->appsettings.json/appsettings.development.json```.
+* Add servicebus primary connection string inside appsettings of ```Logger->Logger.Worker->appsettings.json/appsettings.development.json```.
 * Change email processor settings under EmailProcessor section of ```EmailProcessor->EmailProcessor.Worker->appsettings.json/appsettings.development.json```
 * Set Sandbox value to false, when you have configured the dns of specific service. Otherwise you have to use sandobx.
 * Default email will be used to send email under sandbox.
