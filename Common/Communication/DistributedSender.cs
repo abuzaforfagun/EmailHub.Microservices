@@ -21,7 +21,7 @@ namespace Communication
         {
             await InitializeQueue(queueName);
 
-            var queueClient = new QueueClient(_config.PrimaryKey, queueName);
+            var queueClient = new QueueClient(_config.PrimaryConnectionString, queueName);
 
             var data = await Task.Factory.StartNew(() => JsonConvert.SerializeObject(payload));
             Message message = new Message(Encoding.UTF8.GetBytes(data)) {MessageId = Guid.NewGuid().ToString()};
@@ -30,7 +30,7 @@ namespace Communication
 
         private async Task InitializeQueue(string queueName)
         {
-            var managementClient = new ManagementClient(_config.PrimaryKey);
+            var managementClient = new ManagementClient(_config.PrimaryConnectionString);
             if (!await managementClient.QueueExistsAsync(queueName))
             {
                 try

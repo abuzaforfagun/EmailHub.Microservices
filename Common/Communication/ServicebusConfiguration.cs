@@ -4,7 +4,7 @@ namespace Communication
 {
     public class ServiceBusConfiguration
     {
-        public string PrimaryKey { get; set; }
+        public string PrimaryConnectionString { get; set; }
         public List<QueueItem> Queues { get; set; }
     }
 

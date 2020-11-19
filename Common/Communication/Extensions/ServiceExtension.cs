@@ -22,7 +22,7 @@ namespace Communication.Extensions
 
                 var method = bus.GetType().GetMethod("RegisterQueueHandler");
                 var generic = method.MakeGenericMethod(type);
-                generic.Invoke(bus, new object[] { busConfig.PrimaryKey, queue.Name });
+                generic.Invoke(bus, new object[] { busConfig.PrimaryConnectionString, queue.Name });
             }
         }
     }
