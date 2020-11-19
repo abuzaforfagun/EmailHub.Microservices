@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  gateway:
+    container_name: 'emailhub-gateway'
+    image: 'emailhub-gateway'
+    build:
+      context: .
+      dockerfile: Gateway/Gateway.API/Dockerfile-slow-connection
+    volumes:
+      - .:/var/www/gateway
+    ports:
+      - '8001:80'
+    networks:
+      - emailhub-network
+  
+  emailprocessor:
+    container_name: 'emailprocessor-gateway'
+    image: 'emailprocessor-gateway'
+    build:
+      context: .
+      dockerfile: EmailProcessor/EmailProcessor.Worker/Dockerfile-slow-connection
+    volumes:
+      - .:/var/www/emailprocessor
+    networks:
+      - emailhub-network
+
+  logger:
+    container_name: 'logger-gateway'
+    image: 'logger-gateway'
+    build:
+      context: .
+      dockerfile: Logger/Logger.Worker/Dockerfile-slow-connection
+    volumes:
+      - .:/var/www/logger
+    depends_on:
+      - 'db'
+    networks:
+      - emailhub-network
+
+  db:
+    container_name: 'postgres'
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=abuzafor73azf
+    networks:
+      - emailhub-network
+
+networks:
+  emailhub-network:
+    driver: bridge

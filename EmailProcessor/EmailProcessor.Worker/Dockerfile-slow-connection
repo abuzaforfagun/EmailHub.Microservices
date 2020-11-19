@@ -10,10 +10,12 @@ COPY ./Common/Communication /src/Common/Communication
 COPY ./EmailProcessor /src/EmailProcessor
 
 WORKDIR /src/EmailProcessor/EmailProcessor.Tests
+RUN dotnet restore "EmailProcessor.Tests.csproj" --disable-parallel
 RUN dotnet test
 
 WORKDIR /src/EmailProcessor/EmailProcessor.Worker
 
+RUN dotnet restore "EmailProcessor.Worker.csproj" --disable-parallel
 RUN dotnet publish "EmailProcessor.Worker.csproj" -c Release -o /app
 
 FROM runtime AS final
