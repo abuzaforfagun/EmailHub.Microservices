@@ -15,4 +15,10 @@
     <ProjectReference Include="..\Gateway\Gateway.Domain\Gateway.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

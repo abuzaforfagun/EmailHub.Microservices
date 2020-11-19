@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using AutoMapper;
 using Communication;
 using EmailProcessor.Contracts;
 using Gateway.Domain;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -13,8 +14,11 @@ namespace EmailHub.Console
 {
     class Program
     {
+        public static IConfigurationRoot configuration;
         static async Task Main(string[] args)
         {
+            var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
             IHost host = CreateHostBuilder(args).Build();
             while (true)
             {
@@ -52,30 +56,27 @@ namespace EmailHub.Console
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((_, services) =>
                 {
-                    var servicebusConfiguration = new ServiceBusConfiguration
-                    {
-                        PrimaryKey =
-                            "Endpoint=sb://smart-interview.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=fqSft5Sl8QaVWq6eBmcZJ5Sz69sPn0sFAZrLtW/o0ok=",
-                        Queues = new List<QueueItem>
-                        {
-                            new QueueItem
-                            {
-                                Contractor = "EmailProcessor.Contracts.SendEmailCommand",
-                                Name = "send-email"
-                            },
-                            new QueueItem
-                            {
-                                Contractor = "Logger.Contracts.AddLogCommand",
-                                Name = "add-log"
-                            }
-                        }
-                    };
+                    var servicebusConfiguration = new ServiceBusConfiguration();
+                    configuration.GetSection("Servicebus").Bind(servicebusConfiguration);
+                    
                     services.AddAutoMapper();
                     services.AddSingleton(servicebusConfiguration);
                     services.AddScoped<IDistributedSender, DistributedSender>();
                     services.AddScoped<ICommunicationConfigurationProvider, CommunicationConfigurationProvider>();
                     services.AddMediatR(typeof(DomainConfiguration));
                 });
+
+        private static void ConfigureServices(IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddLogging();
+
+            configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
+                .AddJsonFile("appsettings.json", false)
+                .Build();
+
+            serviceCollection.AddSingleton(configuration);
+        }
 
     }
 }
