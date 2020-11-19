@@ -1,11 +1,11 @@
 # Email Hub
 ## Motive
-* Microservices to serve the request in a asynchoronise way.
+* Microservices to serve the request in asynchoronise way.
 * Factory pattern to resolve the dependency at runtime.
 * Fallback pattern to use other services during fallback.
 * Impleimenting CQS(AKA CQRS).
 * Implimanting Unit of Work pattern.
-* Add minimum unit tests.
+* Write minimum unit tests.
 * Containerize deployment.
 
 ## System Requirement for Development
